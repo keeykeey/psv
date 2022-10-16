@@ -6,7 +6,7 @@ type input_handler_t = { (e:ChangeEvent<HTMLInputElement>)  : void };
 type btn_handler_t   = { (e:ChangeEvent<HTMLButtonElement>) : void };
 
 interface Props{
-    /* offencer */ 
+    /* attacker */ 
     ac              : number,
     getAc           : input_handler_t,
     ac_rank         : number,
@@ -14,7 +14,7 @@ interface Props{
     tech_pow        : number,
     getTechPow      : input_handler_t,   
 
-    /* offencer and defender */
+    /* attacker and defender */
     personality     : number,
     getPersonality  : btn_handler_t,
     item            : number,
@@ -30,13 +30,13 @@ interface Props{
     bd_rank         : number,
     getBdRank       : btn_handler_t,
     
-    /* flag to deside whether it's offencer or defencer */
-    odflag : 'offence' | 'defence' | null,
+    /* flag to deside whether it's attacker or defencer */
+    odflag : 'attack' | 'defence' | null,
 }
 
 function PokInput(props:Props){
     switch (props.odflag){
-        case "offence":
+        case "attack":
             return(
                 <div>
                     攻撃側<br/>
