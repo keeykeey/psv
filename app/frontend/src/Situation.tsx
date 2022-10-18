@@ -3,6 +3,7 @@ import React, { useState, useEffect, ChangeEvent } from 'react';
 const NUM31 = 20  // 個体値が31の時はa,b,c,d,e,の実数値がプラス20されるため
 
 type select_handler_t = { (e:ChangeEvent<HTMLSelectElement>) : void };
+type input_handler_t = { (e:ChangeEvent<HTMLInputElement>) : void };
 
 interface Props{
     weather             : string,
@@ -11,8 +12,8 @@ interface Props{
     getField            : select_handler_t,
     type_adj            : number,
     getTypeAdj          : select_handler_t,
-    is_defending_wall   : number
-    getIsDefendingWall  : select_handler_t, 
+    is_defending_wall   : (string | null),
+    getIsDefendingWall  : input_handler_t, 
 }
 
 function Situation(props:Props){
@@ -36,17 +37,14 @@ function Situation(props:Props){
             </select><br/>
             タイプ相性
             <select>
-                <option value = '1'>{'等倍'}</option>
-                <option value = '2'>{'2倍'}</option>
                 <option value = '4'>{'4倍'}</option>
+                <option value = '2'>{'2倍'}</option>
+                <option value = '1' selected>{'等倍'}</option>
                 <option value = '0.5'>{'1/2減'}</option>
                 <option value = '0.25'>{'1/4減'}</option>
             </select><br/>
-            壁（リフレクター/ひかりのかべ等）
-            <select>{props.is_defending_wall}
-                <option value = '1'>{'壁あり'}</option>
-                <option value = '0.5'>{'壁なし'}</option>
-            </select><br/>
+            壁あり
+            <input type='checkbox'></input>
         </div>
     )
 }
