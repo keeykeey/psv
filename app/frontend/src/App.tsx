@@ -353,6 +353,9 @@ function App() {
                 default_abcd         = {DEFAULT_ABCD}
                 default_tech_pow     = {DEFAULT_TECH_POW}
 
+                window_h             = {290}
+                window_w             = {340}
+
             /><br/>
             <PokInput 
                 ac                   = {ac}
@@ -386,6 +389,9 @@ function App() {
                 default_abcd         = {DEFAULT_ABCD}
                 default_tech_pow     = {DEFAULT_TECH_POW}
 
+                window_h             = {210}
+                window_w             = {340}
+
             />
             <Situation
                 weather              = {weather}
@@ -396,6 +402,9 @@ function App() {
                 getTypeAdj           = {getTypeAdj}
                 is_defending_wall    = {is_defending_wall}
                 getIsDefendingWall   = {getIsDefendingWall}
+
+                window_h             = {150}
+                window_w             = {340}
             /><br/>
 
             <Result                
@@ -404,6 +413,9 @@ function App() {
                 damage_max           = {damage_max}
                 is_fixed_or_randomed = {is_fixed_or_randomed}
                 number_to_beat       = {number_to_beat}
+
+                window_h             = {88}
+                window_w             = {340}
             />
             
         </div>
