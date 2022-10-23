@@ -80,13 +80,13 @@ function PokInput(props:Props){
                     <div style = {title_css}>攻撃側</div><hr/>
                     <div style = {body_css}>
                         攻撃・特攻（努力値込み)
-                        <input onChange={props.getAc} defaultValue={props.default_abcd}/>{props.ac}<br/>
+                        <input onChange={props.getAc} defaultValue={props.default_abcd}/><br/>
                         性格補正
                         <select onChange={props.getPersonality} defaultValue='1'>
                             <option value='1.1'>{'上方補正（1.1倍）'}</option> 
                             <option value='1'>{'補正なし（１倍）'}</option> 
                             <option value='0.9'>{'下方補正（0.9倍）'}</option> 
-                        </select>{props.personality}<br/>
+                        </select><br/>
                         攻撃・特攻ランク
                         <select onChange={props.getAcRank} defaultValue='2'>
                             <option value = '8'>{'+6'}</option>
@@ -102,7 +102,7 @@ function PokInput(props:Props){
                             <option value = '-6'>{'-4'}</option>
                             <option value = '-7'>{'-5'}</option>
                             <option value = '-8'>{'-6'}</option>
-                        </select>{props.ac_rank}<br/>
+                        </select><br/>
                         アイテム
                         <select onChange={props.getItem} defaultValue='1'>
                             <option value = '1.5'>{'こだわり系  ×1.5倍'}</option>
@@ -112,7 +112,7 @@ function PokInput(props:Props){
                             <option value = '1.2'>{'達人の帯 ×1.2倍'}</option>
                             <option value = '1.1'>{'ちからのハチマキ、ものしりメガネ  ×1.1倍'}</option>
                             <option value = '1'>{'なし'}</option>
-                        </select>{props.item}<br/>
+                        </select><br/>
                         特性による攻撃上昇効果
                         <select onChange={props.getFeature} defaultValue='1'>
                             <option value='2.25'>{'2.25倍'}</option>
@@ -124,7 +124,7 @@ function PokInput(props:Props){
                             <option value='1.2'>{'1.2倍'}</option>
                             <option value='1.1'>{'1.1倍'}</option>
                             <option value='1' >{'指定しな'}</option>
-                        </select>{props.feature}<br/>
+                        </select><br/>
                         技の威力
                         <select onChange={props.getTechPow} defaultValue={props.default_tech_pow}>
                             <option value='25'>{'25'}</option>
@@ -155,14 +155,14 @@ function PokInput(props:Props){
                             <option value='150'>{'150'}</option>
                             <option value='155'>{'155'}</option>
                             <option value='160'>{'160'}</option>
-                        </select>{props.tech_pow}<br/>
+                        </select><br/>
                         タイプ一致
                         <select onChange={props.getIsTechTypeMatched} defaultValue='1'>
                             <option value='1.5'>{'一致'}</option>
                             <option value='1' >{'不一致'}</option>
-                        </select>{props.is_tech_type_matched}<br/>
+                        </select><br/>
                         やけど
-                        <input type='checkbox' onChange={props.getIsBurned}/>{String(props.is_burned)}
+                        <input type='checkbox' onChange={props.getIsBurned}/>
                     </div>
                 </div>
             );break;
@@ -181,13 +181,13 @@ function PokInput(props:Props){
                         {/*HP
                         <input onChange={props.getHp} defaultValue = {props.default_hp}></input>{props.hp}<br/>*/}
                         防御・特防（努力値込み）
-                        <input onChange={props.getBd} defaultValue = {props.default_abcd}></input>{props.bd}<br/>
+                        <input onChange={props.getBd} defaultValue = {props.default_abcd}></input><br/>
                         性格補正
                         <select onChange={props.getPersonality} defaultValue='1'>
                             <option value='1.1'>{'上方補正（1.1倍）'}</option> 
                             <option value='1' >{'補正なし（１倍）'}</option> 
                             <option value='0.9'>{'下方補正（0.9倍）'}</option> 
-                            </select>{props.personality}<br/>
+                        </select><br/>
                         防御・特防ランク
                         <select onChange={props.getBdRank} defaultValue = '2'>
                             <option value = '8'>{'+6'}</option>
@@ -203,14 +203,14 @@ function PokInput(props:Props){
                             <option value = '-6'>{'-4'}</option>
                             <option value = '-7'>{'-5'}</option>
                             <option value = '-8'>{'-6'}</option>
-                        </select>{props.bd_rank}<br/>
+                        </select><br/>
                         アイテム
                         <select onChange={props.getItem} defaultValue='1'>
                             <option value = '1.5'>{'とつげきチョッキ  ×1.5倍'}</option>
                             <option value = '1'>{'なし'}</option>
                             <option value = '15'>{'半減木の実 ×0.5倍'}</option>
                             <option value = '0'>風船</option>       {/* フィールド補正が無効になる */}
-                        </select>{props.item}<br/>
+                        </select><br/>
                         特性による防御上昇効果
                         <select onChange={props.getFeature} defaultValue='1'>
                             <option value='2'>{'2倍'}</option>
@@ -225,7 +225,7 @@ function PokInput(props:Props){
                             <option value='0.75'>{'0.75倍'}</option>
                             <option value='0.7'>{'0.7倍'}</option>
                             <option value='0.5'>{'0.5倍'}</option>
-                        </select>{props.feature}<br/>
+                        </select><br/>
                     </div>
                 </div>
 
