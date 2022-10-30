@@ -5,6 +5,9 @@ import './App.css';
 import PokInput from './PokInput'
 import Situation from './Situation'
 import Result from './Result'
+/* TODO
+ * import Feedback from './Feedback'
+ */
 
 function App() {
     /*
@@ -353,8 +356,10 @@ function App() {
                 default_abcd         = {DEFAULT_ABCD}
                 default_tech_pow     = {DEFAULT_TECH_POW}
 
-                window_h             = {290}
-                window_w             = {340}
+                comp_h               = {290}
+                comp_w               = {340}
+                window_h             = {window.innerHeight}
+                window_w             = {window.innerWidth}      
 
             /><br/>
             <PokInput 
@@ -389,8 +394,10 @@ function App() {
                 default_abcd         = {DEFAULT_ABCD}
                 default_tech_pow     = {DEFAULT_TECH_POW}
 
-                window_h             = {210}
-                window_w             = {340}
+                comp_h               = {210}
+                comp_w               = {340}
+                window_h             = {window.innerHeight}
+                window_w             = {window.innerWidth}      
 
             />
             <Situation
@@ -403,8 +410,10 @@ function App() {
                 is_defending_wall    = {is_defending_wall}
                 getIsDefendingWall   = {getIsDefendingWall}
 
-                window_h             = {150}
-                window_w             = {340}
+                comp_h               = {150}
+                comp_w               = {340}
+                window_h             = {window.innerHeight}
+                window_w             = {window.innerWidth}      
             /><br/>
 
             <Result                
@@ -414,9 +423,21 @@ function App() {
                 is_fixed_or_randomed = {is_fixed_or_randomed}
                 number_to_beat       = {number_to_beat}
 
-                window_h             = {88}
-                window_w             = {340}
+                comp_h               = {88}
+                comp_w               = {340}
+                window_h             = {window.innerHeight}
+                window_w             = {window.innerWidth}      
             />
+            
+            {/* TODO
+            <Feedback 
+                comp_h               = {15}
+                comp_w               = {340}
+                window_h             = {window.innerHeight}
+                window_w             = {window.innerWidth}      
+                font_size            = {12}
+            /> 
+            */}    
             
         </div>
     )

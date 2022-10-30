@@ -16,6 +16,8 @@ interface Props{
     getIsDefendingWall  : select_handler_t, 
 
     /* CSS variants */
+    comp_h              : number,
+    comp_w              : number,
     window_h            : number,
     window_w            : number,
 }
@@ -23,8 +25,8 @@ interface Props{
 function Situation(props:Props){
     const PADDING = 20;
     const all_css   : React.CSSProperties = {
-        height           : String(props.window_h) + 'px',
-        width            : String(props.window_w) + 'px',
+        height           : String(props.comp_h) + 'px',
+        width            : String(props.comp_w) + 'px',
 
         backgroundColor  : '#FFFFFF',
         color            : '#000000',
@@ -34,14 +36,14 @@ function Situation(props:Props){
     }
     const title_css : React.CSSProperties = {
         height           : '22px',
-        width            : String(props.window_w) + 'px',
+        width            : String(props.comp_w) + 'px',
 
         fontSize         : '20px',
         font             : 'bold',
     }
     const body_css : React.CSSProperties = {
         height           : '60px',
-        width            : String(props.window_w - PADDING) + 'px',
+        width            : String(props.comp_w - PADDING) + 'px',
         paddingLeft      : String(PADDING) + 'px',
 
     }
