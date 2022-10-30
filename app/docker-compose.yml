@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  setup:
+    container_name: setup
+    volumes:
+      - ./:/dockerApp
+    build:
+      context: .
+      dockerfile: DockerfileSetup
