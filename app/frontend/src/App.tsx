@@ -34,7 +34,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [ac_rank, setAcRank] = useState<number>(1);
@@ -54,7 +54,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [tech_pow, setTechPow] = useState<number>(DEFAULT_TECH_POW);
@@ -65,7 +65,7 @@ function App() {
             Number(e.target.value),is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [is_tech_type_matched, setIsTechTypeMathced] = useState<number>(1);
@@ -76,7 +76,7 @@ function App() {
             tech_pow,Number(e.target.value),is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [is_burned,setIsBurned] = useState<number>(1);
@@ -93,7 +93,7 @@ function App() {
             tech_pow,is_tech_type_matched,n,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     /* PokInput attacker and defender */
@@ -105,7 +105,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
     
     const [bd_personality, setBdPersonality] = useState<number>(1);
@@ -116,7 +116,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,Number(e.target.value),bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [ac_item, setAcItem] = useState<number>(1);
@@ -127,7 +127,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [bd_item, setBdItem] = useState<number>(1);
@@ -138,7 +138,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             Number(e.target.value), bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [ac_feature, setAcFeature] = useState<number>(1);
@@ -149,7 +149,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [bd_feature, setBdFeature] = useState<number>(1);
@@ -160,7 +160,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, Number(e.target.value),
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     /* PokInput defender */
@@ -177,7 +177,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             Number(e.target.value),bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [bd_rank, setBdRank] = useState<number>(1);
@@ -197,7 +197,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,rank,
             bd_item, bd_feature,
-            weather,field,type_adj,is_defending_wall)
+            weather,field,type_adj,is_defending_wall,is_double_damage)
     }
 
     /* Situation */
@@ -210,7 +210,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            Number(e.target.value),field,type_adj,is_defending_wall)
+            Number(e.target.value),field,type_adj,is_defending_wall,is_double_damage)
     }
 
     const [field, setField] = useState<number>(1);
@@ -222,7 +222,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,Number(e.target.value),type_adj,is_defending_wall)
+            weather,Number(e.target.value),type_adj,is_defending_wall,is_double_damage)
     }
 
     const [type_adj,setTypeAdj] = useState<number>(1);
@@ -234,7 +234,7 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,Number(e.target.value),is_defending_wall)
+            weather,field,Number(e.target.value),is_defending_wall,is_double_damage)
     }
 
     const [is_defending_wall, setIsDefendingWall] = useState<number>(1);
@@ -246,7 +246,24 @@ function App() {
             tech_pow,is_tech_type_matched,is_burned,
             bd,bd_personality,bd_rank,
             bd_item, bd_feature,
-            weather,field,type_adj,Number(e.target.value))
+            weather,field,type_adj,Number(e.target.value),is_double_damage)
+    }
+
+    const [is_double_damage,setIsDoubleDamage] = useState<number>(1);
+    function getIsDoubleDamage() {
+        var n : number = 1;
+        switch (is_double_damage){
+            case 1  : setIsDoubleDamage(0.75); n=0.75;break;
+            case 0.75 : setIsDoubleDamage(1);break;
+            default : setIsDoubleDamage(1);break;
+        }
+
+        getDamage(ac,ac_personality,ac_rank,
+            ac_item, ac_feature,
+            tech_pow,is_tech_type_matched,is_burned,
+            bd,bd_personality,bd_rank,
+            bd_item, bd_feature,
+            weather,field,type_adj,is_defending_wall,n)
     }
 
     /* 結果 */
@@ -256,7 +273,7 @@ function App() {
         tech_pow:number,is_tech_type_matched:number,is_burned:number,
         bd:number,bd_personality:number,bd_rank:number,
         bd_item:number, bd_feature:number,
-        weather:number, field:number, type_adj:number,is_defending_wall:number, ) 
+        weather:number, field:number, type_adj:number,is_defending_wall:number,is_double_damage:number ) 
     {   
         var d_uprise = 1    
         if (weather < 10){
@@ -287,7 +304,7 @@ function App() {
         }
 
         var fin_tech_pow :number, fin_ac:number, fin_bd:number;
-        fin_tech_pow = Math.round(tech_pow * ac_item * ac_feature * field);
+        fin_tech_pow = Math.round(tech_pow * ac_item * ac_feature * field * is_double_damage);//is_double_damageの計算の順番は正しくは分からない。
         fin_ac = Math.round(ac * ac_personality * ac_rank );
         fin_bd = Math.round(Math.max(bd,0.5) * d_uprise * bd_rank * bd_personality * 
                             bd_item * bd_feature); 
@@ -401,16 +418,13 @@ function App() {
 
             />
             <Situation
-                weather              = {weather}
                 getWeather           = {getWeather}
-                field                = {field}
                 getField             = {getField}
-                type_adj             = {type_adj}
                 getTypeAdj           = {getTypeAdj}
-                is_defending_wall    = {is_defending_wall}
                 getIsDefendingWall   = {getIsDefendingWall}
+                getIsDoubleDamage    = {getIsDoubleDamage}
 
-                comp_h               = {150}
+                comp_h               = {170}
                 comp_w               = {340}
                 window_h             = {window.innerHeight}
                 window_w             = {window.innerWidth}      

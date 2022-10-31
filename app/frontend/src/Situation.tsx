@@ -6,14 +6,11 @@ type select_handler_t = { (e:ChangeEvent<HTMLSelectElement>) : void };
 type input_handler_t = { (e:ChangeEvent<HTMLInputElement>) : void };
 
 interface Props{
-    weather             : number,
     getWeather          : select_handler_t,
-    field               : number,
     getField            : select_handler_t,
-    type_adj            : number,
     getTypeAdj          : select_handler_t,
-    is_defending_wall   : number ,
     getIsDefendingWall  : select_handler_t, 
+    getIsDoubleDamage   : input_handler_t,
 
     /* CSS variants */
     comp_h              : number,
@@ -77,7 +74,9 @@ function Situation(props:Props){
                     <option value = '1'>{'壁なし'}</option>
                     <option value = '0.5'>{'壁（シングル）'}</option>
                     <option value = '0.6669'>{'壁（ダブル）'}</option>
-                </select>
+                </select><br/>
+                ダブルダメージ
+                <input type='checkbox' onChange={props.getIsDoubleDamage}/>
             </div>
         </div>
     )
