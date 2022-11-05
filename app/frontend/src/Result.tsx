@@ -10,27 +10,27 @@ interface Props{
     /* CSS variants*/
     comp_h               : number,
     comp_w               : number,
-    window_h             : number;
-    window_w             : number;
+    comp_margin          : number,
 }
 
 function Result(props:Props){
     const PADDING = 20;
     const all_css   : React.CSSProperties = {
         height           : String(props.comp_h) + 'px',
-        width            : String(props.comp_w) + 'px',
+        width            : String(props.comp_w-props.comp_margin*2)+ 'px',
+        margin           : String(props.comp_margin) + 'px',
 
-        backgroundColor  : '#FFFFFF',
+        backgroundColor  : '#FFFaF0',
         color            : '#000000',
 
-        fontSize         : '18px',
+        fontSize         : '16px',
 
     }
     const title_css : React.CSSProperties = {
         height           : '22px',
         width            : String(props.comp_w) + 'px',
 
-        fontSize         : '20px',
+        fontSize         : '18px',
         font             : 'bold',
     }
     const body_css : React.CSSProperties = {

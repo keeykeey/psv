@@ -1,10 +1,11 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import internal from 'stream';
-import { isConstructorDeclaration } from 'typescript';
 import './App.css';
 import PokInput from './PokInput'
 import Situation from './Situation'
 import Result from './Result'
+import GetEnv from './GetEnv'
+
 /* TODO
  * import Feedback from './Feedback'
  */
@@ -14,7 +15,7 @@ function App() {
      * ダメージ計算式は、下記を参考に実装した。
      * https://latest.pokewiki.net/%E3%83%80%E3%83%A1%E3%83%BC%E3%82%B8%E8%A8%88%E7%AE%97%E5%BC%8F
      */
-    
+
     const LEVEL : number = 50;
     const CONST_VAL : number =  Math.floor(LEVEL * 2 / 5 +2); //22,ダメージ計算の定数
     const RANDOM_MIN = 0.85;
@@ -339,84 +340,127 @@ function App() {
         ;
     }
 
+    /* LAYOUT */
+    const ENV_INFO = GetEnv;
+    const PHONE_MODE_WIDTH = 900;
+    const POK_COMP_HEIGHT = 290;
+    const SIT_COMP_HEIGHT = 200;
+    const RES_COMP_HEIGHT = 100; 
+    const COMPMARGIN = 20;
+
+    const [window_h, setWindowH] = useState<number>(ENV_INFO.window_h);
+    const [window_w, setWindowW] = useState<number>(ENV_INFO.window_w);
+    const [is_phone_mode, setIsPhoneMobile] 
+        = useState<boolean>((ENV_INFO.window_w < PHONE_MODE_WIDTH) ? true : false);
+    useEffect(()=>{
+        window.addEventListener('resize',(e)=>{
+          setWindowW(window.innerWidth)
+          setWindowH(window.innerHeight)
+          if(window.innerWidth < PHONE_MODE_WIDTH){
+            setIsPhoneMobile(true)
+          }else if(window.innerWidth >= PHONE_MODE_WIDTH){
+            setIsPhoneMobile(false)
+          }
+        })
+        },[]
+    )
+    
+    const all_css   : React.CSSProperties = {
+        height           : String(window_h) + 'px',
+        width            : String(window_w) + 'px',
+        color            : '#000000',
+        backgroundColor  : '#FaF0e6',
+
+        fontSize         : '18px',
+    }
+
+    const title_css : React.CSSProperties = {
+        fontWeight       : 'bold',
+    }
+
+    const pokinput_css : React.CSSProperties = {
+        display          : (is_phone_mode? '' : 'flex')
+    }
+
     return(
-        <div>
-            <PokInput 
-                ac                   = {ac}
-                getAc                = {getAc}
-                ac_rank              = {ac_rank}
-                getAcRank            = {getAcRank}
-                is_burned            = {is_burned}
-                getIsBurned          = {getIsBurned}
-                tech_pow             = {tech_pow}
-                getTechPow           = {getTechPow}
-                is_tech_type_matched = {is_tech_type_matched}
-                getIsTechTypeMatched = {getIsTechTypeMatched}
+        <div style={all_css} >
+            <div style = {title_css}>ポケモンダメージ計算</div>
+            <div style = {pokinput_css}>
+                <PokInput 
+                    ac                   = {ac}
+                    getAc                = {getAc}
+                    ac_rank              = {ac_rank}
+                    getAcRank            = {getAcRank}
+                    is_burned            = {is_burned}
+                    getIsBurned          = {getIsBurned}
+                    tech_pow             = {tech_pow}
+                    getTechPow           = {getTechPow}
+                    is_tech_type_matched = {is_tech_type_matched}
+                    getIsTechTypeMatched = {getIsTechTypeMatched}
 
-                personality          = {ac_personality}
-                getPersonality       = {getAcPersonality}
-                item                 = {ac_item}
-                getItem              = {getAcItem}
-                feature              = {ac_feature}
-                getFeature           = {getAcFeature}
+                    personality          = {ac_personality}
+                    getPersonality       = {getAcPersonality}
+                    item                 = {ac_item}
+                    getItem              = {getAcItem}
+                    feature              = {ac_feature}
+                    getFeature           = {getAcFeature}
 
-                hp                   = {hp}      
-                getHp                = {getHp}
-                bd                   = {bd}
-                getBd                = {getBd}
-                bd_rank              = {bd_rank}
-                getBdRank            = {getBdRank}
-                
-                odflag               = {"attack"}
+                    hp                   = {hp}      
+                    getHp                = {getHp}
+                    bd                   = {bd}
+                    getBd                = {getBd}
+                    bd_rank              = {bd_rank}
+                    getBdRank            = {getBdRank}
+                    
+                    odflag               = {"attack"}
 
-                default_hp           = {DEFAULT_HP}
-                default_abcd         = {DEFAULT_ABCD}
-                default_tech_pow     = {DEFAULT_TECH_POW}
+                    default_hp           = {DEFAULT_HP}
+                    default_abcd         = {DEFAULT_ABCD}
+                    default_tech_pow     = {DEFAULT_TECH_POW}
 
-                comp_h               = {290}
-                comp_w               = {340}
-                window_h             = {window.innerHeight}
-                window_w             = {window.innerWidth}      
+                    comp_h               = {(is_phone_mode ? POK_COMP_HEIGHT : POK_COMP_HEIGHT)}
+                    comp_w               = {(is_phone_mode ? window_w : window_w/2)}
+                    comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
 
-            /><br/>
-            <PokInput 
-                ac                   = {ac}
-                getAc                = {getAc}
-                ac_rank              = {ac_rank}
-                getAcRank            = {getAcRank}
-                is_burned            = {is_burned}
-                getIsBurned          = {getIsBurned}
-                tech_pow             = {tech_pow}
-                getTechPow           = {getTechPow}
-                is_tech_type_matched = {is_tech_type_matched}
-                getIsTechTypeMatched = {getIsTechTypeMatched}
+                /><br/>
+                <PokInput 
+                    ac                   = {ac}
+                    getAc                = {getAc}
+                    ac_rank              = {ac_rank}
+                    getAcRank            = {getAcRank}
+                    is_burned            = {is_burned}
+                    getIsBurned          = {getIsBurned}
+                    tech_pow             = {tech_pow}
+                    getTechPow           = {getTechPow}
+                    is_tech_type_matched = {is_tech_type_matched}
+                    getIsTechTypeMatched = {getIsTechTypeMatched}
 
-                personality          = {bd_personality}
-                getPersonality       = {getBdPersonality}
-                item                 = {ac_item}
-                getItem              = {getBdItem}
-                feature              = {bd_feature}
-                getFeature           = {getBdFeature}
+                    personality          = {bd_personality}
+                    getPersonality       = {getBdPersonality}
+                    item                 = {ac_item}
+                    getItem              = {getBdItem}
+                    feature              = {bd_feature}
+                    getFeature           = {getBdFeature}
 
-                hp                   = {hp}      
-                getHp                = {getHp}
-                bd                   = {bd}
-                getBd                = {getBd}
-                bd_rank              = {bd_rank}
-                getBdRank            = {getBdRank}
+                    hp                   = {hp}      
+                    getHp                = {getHp}
+                    bd                   = {bd}
+                    getBd                = {getBd}
+                    bd_rank              = {bd_rank}
+                    getBdRank            = {getBdRank}
 
-                odflag               = {"defence"}
+                    odflag               = {"defence"}
 
-                default_hp           = {DEFAULT_HP}
-                default_abcd         = {DEFAULT_ABCD}
-                default_tech_pow     = {DEFAULT_TECH_POW}
+                    default_hp           = {DEFAULT_HP}
+                    default_abcd         = {DEFAULT_ABCD}
+                    default_tech_pow     = {DEFAULT_TECH_POW}
 
-                comp_h               = {210}
-                comp_w               = {340}
-                window_h             = {window.innerHeight}
-                window_w             = {window.innerWidth}      
+                    comp_h               = {(is_phone_mode ? POK_COMP_HEIGHT : POK_COMP_HEIGHT)}
+                    comp_w               = {(is_phone_mode ? window_w : window_w/2)}
+                    comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
 
-            />
+                />
+            </div>
             <Situation
                 getWeather           = {getWeather}
                 getField             = {getField}
@@ -424,10 +468,9 @@ function App() {
                 getIsDefendingWall   = {getIsDefendingWall}
                 getIsDoubleDamage    = {getIsDoubleDamage}
 
-                comp_h               = {170}
-                comp_w               = {340}
-                window_h             = {window.innerHeight}
-                window_w             = {window.innerWidth}      
+                comp_h               = {(is_phone_mode ? SIT_COMP_HEIGHT : SIT_COMP_HEIGHT)}
+                comp_w               = {(is_phone_mode ? window_w : window_w)}
+                comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
             /><br/>
 
             <Result                
@@ -437,10 +480,9 @@ function App() {
                 is_fixed_or_randomed = {is_fixed_or_randomed}
                 number_to_beat       = {number_to_beat}
 
-                comp_h               = {88}
-                comp_w               = {340}
-                window_h             = {window.innerHeight}
-                window_w             = {window.innerWidth}      
+                comp_h               = {(is_phone_mode ? RES_COMP_HEIGHT : RES_COMP_HEIGHT)}
+                comp_w               = {(is_phone_mode ? window_w : window_w)}
+                comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
             />
             
             {/* TODO
