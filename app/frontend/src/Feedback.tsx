@@ -20,7 +20,8 @@ interface Param {
     body: string | null
 }
 
-function Feedback(props:Props){
+function Feedback(/*props:Props*/){
+    /*
     const char_count = 10  //フィードバックを送る　は10文字
     const MARGIN = 10
     const all_css        : React.CSSProperties = {
@@ -53,6 +54,12 @@ function Feedback(props:Props){
         backgroundColor  : '#FFCC00',
         borderColor      : '#FFCC00'
     }
+    */
+
+    const tmp_css : React.CSSProperties = {
+        fontSize         : '12px', 
+        marginLeft       : '20px',       
+    }
 
     /*
      * MODAL WINDOWS
@@ -76,9 +83,10 @@ function Feedback(props:Props){
          * TODO 
          * バックエンド側に、フィードバックを送信する処理を書く。
          */
-        ()=>null;
+        ;
     }
 
+    /*
     return(
         <div style={all_css}> 
             <u style = {textline_css} onClick={getShowModal}>フィードバックを送信</u>
@@ -103,8 +111,13 @@ function Feedback(props:Props){
                 ''
             } 
             </div>
+        </div>
+    )
+    */
 
-
+    return (
+        <div style={tmp_css}>
+            <a href="https://twitter.com/shin0618ff">フィードバックはこちらへお願いします。</a>
         </div>
     )
 }

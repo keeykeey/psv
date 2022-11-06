@@ -5,10 +5,7 @@ import PokInput from './PokInput'
 import Situation from './Situation'
 import Result from './Result'
 import GetEnv from './GetEnv'
-
-/* TODO
- * import Feedback from './Feedback'
- */
+import Feedback from './Feedback'
 
 function App() {
     /*
@@ -484,6 +481,9 @@ function App() {
                 comp_w               = {(is_phone_mode ? window_w : window_w)}
                 comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
             />
+            <div>
+                <Feedback></Feedback>
+            </div>
             
             {/* TODO
             <Feedback 
