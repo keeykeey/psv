@@ -6,13 +6,27 @@ import (
 	"io/ioutil"
 	"bytes"
 	"encoding/json"
+	"os"
 )
 
 type Feedback struct {
 	Textline string
 }
 
-func FeedbackClient() string {
+func GetEndpoint() string {
+	f,err := os.Open(".endpoint")
+	if (err != nil){
+		panic(err)
+	}
+	data := make([]byte,1024)
+	count , err := f.Read(data)
+	if (err != nil){
+		panic(err)
+	}
+	return string(data[:count])    
+}
+
+func FeedbackClient() {
 	/*
 	 * Preparation
 	 */
@@ -24,7 +38,7 @@ func FeedbackClient() string {
 		panic("Error\n")
 	}
   
-	endpoint := "http://localhost:8080/postfeedback"
+	endpoint := GetEndpoint()
     req, err := http.NewRequest("POST", endpoint, bytes.NewBuffer(json_string))
 	if (err != nil) {
 		panic("Error\n")
@@ -47,6 +61,4 @@ func FeedbackClient() string {
 	}
 
 	fmt.Printf("resp.Body : %#v\n",string(byteArray))
-
-    return string(byteArray)
 }
