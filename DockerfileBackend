@@ -1,0 +1,17 @@
+FROM golang:1.16-alpine as dev
+
+#~/go/src/
+WORKDIR src
+
+RUN apk update \
+  && apk add --no-cache git \
+  && go get -t github.com/lib/pq
+
+#~/go/volume/
+#WORKDIR ../volume
+WORKDIR ../
+
+
+EXPOSE 8080
+
+ENTRYPOINT ["sh","run_backend.sh"]
