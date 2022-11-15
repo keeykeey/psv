@@ -18,7 +18,11 @@ func wt(f *os.File, s string) {
 }
 
 func PostFeedback(w http.ResponseWriter, r *http.Request){
-    type Feedback struct {
+	w.Header().Set("Access-Control-Allow-Origin","*")
+	headers := r.Header.Get("Access-Control-Request-Headers")
+    w.Header().Set("Access-Control-Allow-Headers",headers)
+
+	type Feedback struct {
         Textline  string
 	}
 	var fb Feedback
