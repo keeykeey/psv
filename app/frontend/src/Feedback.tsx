@@ -1,15 +1,13 @@
+import { stringify } from 'querystring';
 import React, { useState, useEffect, ChangeEvent } from 'react';
 import './App.css'
 import env from './GetEnv'
 
 interface Props{
     /* CSS variants*/
-    window_h             : number;
-    window_w             : number;
     comp_h               : number;
     comp_w               : number;
-
-    font_size            : number;
+    comp_margin          : number;
 }
 
 interface Param {
@@ -20,41 +18,46 @@ interface Param {
     body: string | null
 }
 
-function Feedback(/*props:Props*/){
-    /*
+interface PostData {
+    Textline : string;
+}
+
+function Feedback(props:Props){   
     const char_count = 10  //フィードバックを送る　は10文字
     const MARGIN = 10
     const all_css        : React.CSSProperties = {
         height           : String(props.comp_h) + 'px',
         width            : String(props.comp_w) + 'px',
+        margin           : String(props.comp_margin) + 'px',
     }
     const textline_css   : React.CSSProperties = {
-        paddingLeft      : String((props.comp_w - props.font_size * char_count)) + 'px',
-        fontSize         : String(props.font_size) + 'px',
-        cursor           : 'pointer',   
+        fontSize         : '12px',
+        cursor           : 'pointer', 
+        backgroundColor  : '#FFFaF0',
+        border           : 'none'
     }
 
     const title_css      : React.CSSProperties = {
         height           : '20px',
-        fontSize         : String(props.font_size + 4) + 'px',
+        fontSize         : '12px',
     }
     const modal_css      : React.CSSProperties = {
-        height           : String(Math.min(props.window_h,400)) + 'px',
-        width            : String(Math.min(props.window_w,400)) + 'px',
+        height           : String(Math.min(window.innerHeight,400)) + 'px',
+        width            : String(Math.min(window.innerWidth,400)) + 'px',
         backgroundColor  : '#FFFFFF'
     }
     const text_area_css  : React.CSSProperties = {
-        height           : String(Math.min(props.window_h,320)) + 'px',
-        width            : String(Math.min(props.window_w,360)) + 'px',
+        height           : String(Math.min(window.innerHeight,320)) + 'px',
+        width            : String(Math.min(window.innerWidth,360)) + 'px',
         marginLeft       : String(MARGIN) + 'px',
     }
     const btn_css        : React.CSSProperties = {
-        width            : String(Math.min(props.window_w,365)) + 'px',
+        width            : String(Math.min(window.innerWidth,365)) + 'px',
         marginLeft       : String(MARGIN) + 'px',
-        backgroundColor  : '#FFCC00',
-        borderColor      : '#FFCC00'
+        backgroundColor  : '#FaF0e6',
+        borderColor      : '#FaF0e6'
     }
-    */
+    
 
     const tmp_css : React.CSSProperties = {
         fontSize         : '12px', 
@@ -79,17 +82,32 @@ function Feedback(/*props:Props*/){
     }
 
     function sendFeedback(){
-        /* 
-         * TODO 
-         * バックエンド側に、フィードバックを送信する処理を書く。
+        /*
+         * 環境変数.envのreactでの使用方法については下記を参照した。
+         * https://ralacode.com/blog/post/use-env-variables-in-react/
          */
-        ;
+        //const endpoint = process.env.REACT_APP_ENDPOINT_FEEDBACK;
+        const post_data:PostData = {
+            Textline: textValue,
+        }
+        const param:Param={
+            method:'POST',
+            mode:'cors',
+            credentials:'omit',
+            headers:{
+              'Content-Type':'application/json'
+            },
+            body:JSON.stringify(post_data)
+        }
+
+        fetch(String(env.endpoint),param)
+        .then(res=>console.log('posting feedback succeeded'))
+        .catch(error=>console.log('error occured',error))
     }
 
-    /*
     return(
         <div style={all_css}> 
-            <u style = {textline_css} onClick={getShowModal}>フィードバックを送信</u>
+            <button style = {textline_css} onClick={getShowModal}><u>フィードバックを送信</u></button>
             <div>
             {
                 showModal ?
@@ -111,13 +129,6 @@ function Feedback(/*props:Props*/){
                 ''
             } 
             </div>
-        </div>
-    )
-    */
-
-    return (
-        <div style={tmp_css}>
-            <a href="https://twitter.com/shin0618ff">フィードバックはこちらへお願いします。</a>
         </div>
     )
 }

@@ -1,5 +1,5 @@
 interface Env {
-    api_url   :  string
+    endpoint  :  string | undefined,
     os        :  string //"mac" | "win" | "android" | "linux",
     browser   :  string //"chrome" | "safari" | "edge" | "firefox",
     window_h  :  number
@@ -19,11 +19,11 @@ function getEnvBrouser() {
 const env_browser = getEnvBrouser()
 
 const env : Env = {
-    api_url   : "https://APIURL:8000",
+    endpoint  : process.env.REACT_APP_ENDPOINT_FEEDBACK,
     os        : env_os,
     browser   : env_browser,
-    window_h  : window.innerHeight,
-    window_w  : window.innerWidth
+    window_h  : document.documentElement.scrollHeight,
+    window_w  : document.documentElement.scrollWidth,
 }
 
 export default env;

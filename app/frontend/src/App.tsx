@@ -4,7 +4,7 @@ import './App.css';
 import PokInput from './PokInput'
 import Situation from './Situation'
 import Result from './Result'
-import GetEnv from './GetEnv'
+import env from './GetEnv'
 import Feedback from './Feedback'
 
 function App() {
@@ -338,17 +338,16 @@ function App() {
     }
 
     /* LAYOUT */
-    const ENV_INFO = GetEnv;
     const PHONE_MODE_WIDTH = 900;
     const POK_COMP_HEIGHT = 290;
     const SIT_COMP_HEIGHT = 200;
     const RES_COMP_HEIGHT = 100; 
     const COMPMARGIN = 20;
 
-    const [window_h, setWindowH] = useState<number>(ENV_INFO.window_h);
-    const [window_w, setWindowW] = useState<number>(ENV_INFO.window_w);
+    const [window_h, setWindowH] = useState<number>(env.window_h);
+    const [window_w, setWindowW] = useState<number>(env.window_w);
     const [is_phone_mode, setIsPhoneMobile] 
-        = useState<boolean>((ENV_INFO.window_w < PHONE_MODE_WIDTH) ? true : false);
+        = useState<boolean>((env.window_w < PHONE_MODE_WIDTH) ? true : false);
     useEffect(()=>{
         window.addEventListener('resize',(e)=>{
           setWindowW(window.innerWidth)
@@ -481,19 +480,12 @@ function App() {
                 comp_w               = {(is_phone_mode ? window_w : window_w)}
                 comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
             />
-            <div>
-                <Feedback></Feedback>
-            </div>
             
-            {/* TODO
             <Feedback 
-                comp_h               = {15}
-                comp_w               = {340}
-                window_h             = {window.innerHeight}
-                window_w             = {window.innerWidth}      
-                font_size            = {12}
+                comp_h               = {20}
+                comp_w               = {(is_phone_mode ? window_w : window_w)}
+                comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
             /> 
-            */}    
             
         </div>
     )
