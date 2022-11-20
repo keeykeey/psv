@@ -344,14 +344,16 @@ function App() {
     const RES_COMP_HEIGHT = 100; 
     const COMPMARGIN = 20;
 
-    const [window_h, setWindowH] = useState<number>(env.window_h);
     const [window_w, setWindowW] = useState<number>(env.window_w);
+    const [window_h, setWindowH] = useState<number>(document.documentElement.scrollHeight);
     const [is_phone_mode, setIsPhoneMobile] 
         = useState<boolean>((env.window_w < PHONE_MODE_WIDTH) ? true : false);
     useEffect(()=>{
+        //ページを初期に読み込んだ時点で、正しくwindow_hがセットされていなため、あえて下の一行を入れている。
+        setWindowH(document.documentElement.scrollHeight) 
         window.addEventListener('resize',(e)=>{
           setWindowW(window.innerWidth)
-          setWindowH(window.innerHeight)
+          setWindowH(document.documentElement.scrollHeight)
           if(window.innerWidth < PHONE_MODE_WIDTH){
             setIsPhoneMobile(true)
           }else if(window.innerWidth >= PHONE_MODE_WIDTH){

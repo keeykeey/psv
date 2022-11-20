@@ -23,7 +23,7 @@ const env : Env = {
     os        : env_os,
     browser   : env_browser,
     window_h  : document.documentElement.scrollHeight,
-    window_w  : document.documentElement.scrollWidth,
+    window_w  : window.innerWidth,
 }
 
 export default env;
