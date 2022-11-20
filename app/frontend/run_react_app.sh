@@ -1,2 +1,2 @@
-npm start
-#yarn build
+#npm start
+yarn build
