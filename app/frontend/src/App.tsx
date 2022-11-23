@@ -342,6 +342,7 @@ function App() {
     const POK_COMP_HEIGHT = 290;
     const SIT_COMP_HEIGHT = 200;
     const RES_COMP_HEIGHT = 100; 
+    const FEE_COMP_HEIGHT = 40;
     const COMPMARGIN = 20;
 
     const [window_w, setWindowW] = useState<number>(env.window_w);
@@ -484,7 +485,7 @@ function App() {
             />
             
             <Feedback 
-                comp_h               = {20}
+                comp_h               = {FEE_COMP_HEIGHT}
                 comp_w               = {(is_phone_mode ? window_w : window_w)}
                 comp_margin          = {(is_phone_mode ? COMPMARGIN : COMPMARGIN)}
             /> 

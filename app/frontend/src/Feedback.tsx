@@ -1,5 +1,4 @@
-import { stringify } from 'querystring';
-import React, { useState, useEffect, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import './App.css'
 import env from './GetEnv'
 
@@ -23,7 +22,6 @@ interface PostData {
 }
 
 function Feedback(props:Props){   
-    const char_count = 10  //フィードバックを送る　は10文字
     const MARGIN = 10
     const all_css        : React.CSSProperties = {
         height           : String(props.comp_h) + 'px',
@@ -36,10 +34,10 @@ function Feedback(props:Props){
         backgroundColor  : '#FFFaF0',
         border           : 'none'
     }
-
     const title_css      : React.CSSProperties = {
-        height           : '20px',
+        height           : '30px',
         fontSize         : '12px',
+        marginBottom     : String(MARGIN) + 'px',
     }
     const modal_css      : React.CSSProperties = {
         height           : String(Math.min(window.innerHeight,400)) + 'px',
@@ -58,12 +56,6 @@ function Feedback(props:Props){
         borderColor      : '#FaF0e6'
     }
     
-
-    const tmp_css : React.CSSProperties = {
-        fontSize         : '12px', 
-        marginLeft       : '20px',       
-    }
-
     /*
      * MODAL WINDOWS
      */
