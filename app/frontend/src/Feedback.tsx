@@ -13,7 +13,7 @@ interface Param {
     method: 'GET' | 'POST' | 'PUT' | 'DELETE',
     mode: 'no-cors' | 'cors' | 'same-origin',
     credentials: 'include' | 'same-origin' | 'omit',
-    headers:{'Content-Type':'application/json' | 'text/html' |'multipart/form-data'}|{'taskid':string},
+    headers:{'Content-Type':'application/json' | 'text/html' |'multipart/form-data'},
     body: string | null
 }
 
