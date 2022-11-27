@@ -93,8 +93,10 @@ function Feedback(props:Props){
         }
 
         fetch(String(env.endpoint),param)
-        .then(res=>console.log('posting feedback succeeded'))
-        .catch(error=>console.log('error occured',error))
+        .then(res=>{
+            setTimeout(getShowModal,500)
+        })
+        .catch(error=>console.log('error : ',error))
     }
 
     return(
