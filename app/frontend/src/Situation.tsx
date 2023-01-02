@@ -54,7 +54,7 @@ function Situation(props:Props){
                     <option value = '1' > {'指定しない'}</option>
                     <option value = '1.5'>{'雨・晴による与ダメージアップ　×1.5倍'}</option>
                     <option value = '0.5'>{'雨・晴による被ダメージダウン　×0.5倍'}</option>
-                    <option value = '15'>{'砂嵐による特防アップ　×1.5倍'}</option>
+                    <option value = '15'>{'砂嵐・雪による特防・防御アップ　×1.5倍'}</option>
                 </select><br/>
                 フィールド
                 <select onChange = {props.getField} >
