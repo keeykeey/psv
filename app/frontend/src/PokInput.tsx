@@ -160,7 +160,8 @@ function PokInput(props:Props){
                         </select><br/>
                         タイプ一致
                         <select onChange={props.getIsTechTypeMatched} defaultValue='1'>
-                            <option value='1.5'>{'一致'}</option>
+                            <option value='2'>{'テラスタイプ一致 ×2倍'}</option>
+                            <option value='1.5'>{'一致 ×1.5倍'}</option>
                             <option value='1' >{'不一致'}</option>
                         </select><br/>
                         やけど

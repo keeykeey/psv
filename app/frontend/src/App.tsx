@@ -1,5 +1,4 @@
 import React, { useState, useEffect, ChangeEvent } from 'react';
-import internal from 'stream';
 import './App.css';
 import PokInput from './PokInput'
 import Situation from './Situation'
@@ -273,14 +272,14 @@ function App() {
         bd_item:number, bd_feature:number,
         weather:number, field:number, type_adj:number,is_defending_wall:number,is_double_damage:number ) 
     {   
-        var d_uprise = 1    
+        var db_uprise = 1    
         if (weather < 10){
             ;
         } else {
             switch (weather){
                 case 15: {
-                    //砂嵐の特防1.5倍
-                    d_uprise = 1.5;
+                    //砂嵐・雪の特防1.5倍
+                    db_uprise = 1.5;
                     weather = 1;
                 };break;
                 default : weather = 1; break;
@@ -304,7 +303,7 @@ function App() {
         var fin_tech_pow :number, fin_ac:number, fin_bd:number;
         fin_tech_pow = Math.round(tech_pow * ac_item * ac_feature * field * is_double_damage);//is_double_damageの計算の順番は正しくは分からない。
         fin_ac = Math.round(ac * ac_personality * ac_rank );
-        fin_bd = Math.round(Math.max(bd,0.5) * d_uprise * bd_rank * bd_personality * 
+        fin_bd = Math.round(Math.max(bd,0.5) * db_uprise * bd_rank * bd_personality * 
                             bd_item * bd_feature); 
         
         var fin_dmg = Math.floor(CONST_VAL * fin_tech_pow * fin_ac / fin_bd)
